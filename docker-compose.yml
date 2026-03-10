@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: youtube_growth
+
+  api:
+    build:
+      context: ./server
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo:27017/youtube_growth
+      CORS_ORIGIN: http://localhost:3000
+      ADMIN_TOKEN: local-admin-token
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

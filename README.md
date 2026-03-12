@@ -2,6 +2,18 @@
 
 React + Express + MongoDB starter for validating your creator-growth idea with a waitlist.
 
+## GitHub Pages + Tally (No backend required)
+
+The frontend is now configured to run as a static site with Tally form capture.
+
+1. Create your Tally form and copy the public form URL.
+2. In GitHub repo, open `Settings -> Secrets and variables -> Actions -> Variables`.
+3. Add variable: `VITE_TALLY_FORM_URL` = your Tally URL.
+4. In GitHub repo, open `Settings -> Pages`:
+- Source: `GitHub Actions`
+5. Push to `main` and the workflow deploys automatically.
+6. Share your GitHub Pages URL globally.
+
 ## Run locally with Docker
 
 ```bash

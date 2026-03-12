@@ -1,6 +1,6 @@
-# YouTube Creators Learn & Grow
+#Validation
 
-React + Express + MongoDB starter for validating your creator-growth idea with a waitlist.
+React + Express + MongoDB starter for validating an idea with a waitlist.
 
 ## GitHub Pages + Tally (No backend required)
 

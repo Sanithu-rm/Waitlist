@@ -45,16 +45,23 @@ export default function App() {
       </nav>
 
       <header className="hero">
-        <div className="hero-smoke" aria-hidden="true" />
-        <div className="hero-content">
-          <h1>
-            YouTube creator platform helping channels grow with live expert reviews,
-            structured learning and monthly implementation updates.
-          </h1>
-          <p>Built for creators targeting their first 1,000 subscribers.</p>
-          <button type="button" className="hero-cta" onClick={openTally}>
-            Reserve Your Spot
-          </button>
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <h1>
+              Social media creator platform helping you grow with live expert reviews,
+              structured learning and monthly implementation updates.
+            </h1>
+            <p>Build your first 1,000 true followers with systems that actually work.</p>
+            <button type="button" className="hero-cta" onClick={openTally}>
+              Join Waitlist
+            </button>
+          </div>
+          <div className="hero-art" aria-hidden="true">
+            <div className="art-glow" />
+            <div className="art-panel" />
+            <div className="art-card art-card-one" />
+            <div className="art-card art-card-two" />
+          </div>
         </div>
       </header>
 

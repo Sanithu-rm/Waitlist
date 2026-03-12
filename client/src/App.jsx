@@ -19,7 +19,51 @@ const MONTHLY_VIDEOS = [
   },
 ];
 
-const NAV_LINKS = ["Home", "Course", "Live Reviews", "Monthly Updates", "About", "Waitlist"];
+const NAV_LINKS = [
+  { label: "Home", href: "#home" },
+  { label: "Features", href: "#features" },
+  { label: "How It Works", href: "#how" },
+  { label: "Updates", href: "#updates" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Waitlist", href: "#waitlist-form" },
+];
+
+const STEPS = [
+  {
+    title: "Join",
+    text: "Submit your email and tell us your creator goal.",
+  },
+  {
+    title: "Learn",
+    text: "Follow simple frameworks for content, retention, and consistency.",
+  },
+  {
+    title: "Scale",
+    text: "Get monthly updates and live feedback to keep improving.",
+  },
+];
+
+const AUDIENCE = [
+  "New creators starting from zero followers",
+  "Creators stuck below their first growth milestone",
+  "Personal brands building an audience on multiple platforms",
+  "Small teams turning content into a repeatable growth system",
+];
+
+const FAQS = [
+  {
+    q: "Is this only for YouTube?",
+    a: "No. The training and systems are built for social media creators across platforms.",
+  },
+  {
+    q: "How often is new content added?",
+    a: "Fresh implementation updates are added every month.",
+  },
+  {
+    q: "Do I need prior experience?",
+    a: "No. The roadmap is designed for beginners and improving creators.",
+  },
+];
 
 function openTally() {
   window.open(TALLY_FORM_URL, "_blank", "noopener,noreferrer");
@@ -34,8 +78,8 @@ export default function App() {
         </div>
         <ul className="nav-links">
           {NAV_LINKS.map((item) => (
-            <li key={item}>
-              <a href="#">{item}</a>
+            <li key={item.label}>
+              <a href={item.href}>{item.label}</a>
             </li>
           ))}
         </ul>
@@ -44,35 +88,36 @@ export default function App() {
         </button>
       </nav>
 
-      <header className="hero">
-        <div className="hero-inner">
-          <div className="hero-copy">
-            <h1>
-              Social media creator platform helping you grow with live expert reviews,
-              structured learning and monthly implementation updates.
-            </h1>
-            <p>Build your first 1,000 true followers with systems that actually work.</p>
+      <header className="hero" id="home">
+        <div className="hero-particles" aria-hidden="true">
+          <span className="particle p1" />
+          <span className="particle p2" />
+          <span className="particle p3" />
+          <span className="particle p4" />
+          <span className="particle p5" />
+          <span className="particle p6" />
+          <span className="particle p7" />
+          <span className="particle p8" />
+        </div>
+        <div className="hero-inner centered">
+          <div className="hero-copy centered">
+            <h1>Grow as a Social Media Creator</h1>
+            <p>Live reviews, practical systems, and monthly updates to help you grow faster.</p>
             <button type="button" className="hero-cta" onClick={openTally}>
-              Join Waitlist
+              Reserve My Spot
             </button>
-          </div>
-          <div className="hero-art" aria-hidden="true">
-            <div className="art-glow" />
-            <div className="art-panel" />
-            <div className="art-card art-card-one" />
-            <div className="art-card art-card-two" />
           </div>
         </div>
       </header>
 
       <main className="main-content">
-        <section className="card">
+        <section className="card" id="features">
           <h2>What You Get</h2>
           <ul className="feature-list">
-            <li>Weekly live channel reviews from growth experts.</li>
-            <li>Full YouTube course from setup to first 1,000 subscribers.</li>
+            <li>Weekly live creator reviews from growth experts.</li>
+            <li>Full course from setup to your first major milestone.</li>
             <li>Monthly new training videos and implementation playbooks.</li>
-            <li>Channel positioning, retention, and thumbnail systems.</li>
+            <li>Positioning, retention, and conversion systems.</li>
             <li>Founder-led accountability and milestone tracking.</li>
           </ul>
         </section>
@@ -91,7 +136,19 @@ export default function App() {
           />
         </section>
 
-        <section className="card full">
+        <section className="card full" id="how">
+          <h2>How It Works</h2>
+          <div className="steps-grid">
+            {STEPS.map((step) => (
+              <article key={step.title} className="step-card">
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="card full" id="updates">
           <h2>Monthly Updated Videos</h2>
           <div className="grid">
             {MONTHLY_VIDEOS.map((video) => (
@@ -103,7 +160,35 @@ export default function App() {
             ))}
           </div>
         </section>
+
+        <section className="card full">
+          <h2>Built For</h2>
+          <ul className="audience-list">
+            {AUDIENCE.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="card full" id="faq">
+          <h2>FAQ</h2>
+          <div className="faq-grid">
+            {FAQS.map((item) => (
+              <article key={item.q} className="faq-item">
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
+
+      <footer className="footer">
+        <p>CreatorGrowth.io</p>
+        <a href={TALLY_FORM_URL} target="_blank" rel="noreferrer">
+          Join Waitlist
+        </a>
+      </footer>
     </div>
   );
 }

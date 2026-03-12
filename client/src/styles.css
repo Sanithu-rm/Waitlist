@@ -103,11 +103,11 @@ a {
 
 .hero {
   position: relative;
-  min-height: calc(100vh - 74px);
+  min-height: calc(86vh - 74px);
   display: flex;
-  align-items: stretch;
+  align-items: center;
   overflow: hidden;
-  padding: 26px 30px 0;
+  padding: 40px 30px 20px;
 }
 
 .hero::before {
@@ -118,34 +118,57 @@ a {
   z-index: -1;
 }
 
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(176, 118, 255, 0.95) 0%, rgba(176, 118, 255, 0.1) 68%, transparent 100%);
+  filter: blur(0.4px);
+  animation: floatParticle 12s ease-in-out infinite;
+}
+
+.p1 { width: 10px; height: 10px; left: 8%; top: 74%; animation-delay: -1s; }
+.p2 { width: 7px; height: 7px; left: 18%; top: 58%; animation-delay: -4s; }
+.p3 { width: 11px; height: 11px; left: 30%; top: 80%; animation-delay: -2s; }
+.p4 { width: 8px; height: 8px; left: 45%; top: 66%; animation-delay: -6s; }
+.p5 { width: 12px; height: 12px; left: 62%; top: 76%; animation-delay: -3s; }
+.p6 { width: 9px; height: 9px; left: 73%; top: 62%; animation-delay: -5s; }
+.p7 { width: 7px; height: 7px; left: 84%; top: 82%; animation-delay: -7s; }
+.p8 { width: 10px; height: 10px; left: 92%; top: 70%; animation-delay: -8s; }
+
 .hero-inner {
-  width: min(1360px, 100%);
+  width: min(1120px, 100%);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: 26px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 920px;
   animation: riseIn 700ms ease-out;
 }
 
 .hero-copy h1 {
   margin: 0;
   font-family: "Outfit", "Segoe UI", sans-serif;
-  font-size: clamp(2.6rem, 6.6vw, 5.9rem);
-  line-height: 0.96;
+  font-size: clamp(2.4rem, 6vw, 5.1rem);
+  line-height: 0.98;
   font-weight: 800;
-  letter-spacing: -1.7px;
+  letter-spacing: -1.2px;
 }
 
 .hero-copy p {
-  margin: 24px 0 26px;
+  margin: 18px 0 24px;
   color: #d2d2d9;
-  font-size: clamp(1rem, 1.5vw, 1.6rem);
-  max-width: 640px;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  max-width: 700px;
 }
 
 .hero-cta {
@@ -162,64 +185,22 @@ a {
   transition: transform 0.2s ease;
 }
 
-.hero-art {
+.hero-inner.centered {
+  text-align: center;
   position: relative;
-  min-height: 520px;
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(58, 28, 97, 0.56), rgba(9, 10, 16, 0.9)),
-    radial-gradient(circle at 60% 40%, rgba(242, 131, 255, 0.3), transparent 45%),
-    linear-gradient(120deg, #1c2133 0%, #1b1630 45%, #0f0f18 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1;
 }
 
-.art-glow {
-  position: absolute;
-  width: 74%;
-  height: 70%;
-  right: -6%;
-  top: 8%;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(205, 97, 255, 0.58) 0%, rgba(82, 20, 162, 0.08) 60%, transparent 72%);
-  filter: blur(18px);
-}
-
-.art-panel {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 46%;
-  background: linear-gradient(180deg, rgba(8, 9, 15, 0) 0%, rgba(7, 8, 12, 0.94) 68%);
-}
-
-.art-card {
-  position: absolute;
-  border-radius: 16px;
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.34);
-}
-
-.art-card-one {
-  width: 120px;
-  height: 86px;
-  top: 14%;
-  left: 10%;
-}
-
-.art-card-two {
-  width: 170px;
-  height: 120px;
-  bottom: 10%;
-  right: 8%;
+.hero-copy.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-content {
   max-width: 1320px;
-  margin: 0 auto 50px;
-  padding: 30px 28px 0;
+  margin: 0 auto 40px;
+  padding: 20px 28px 0;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr;
@@ -234,9 +215,10 @@ a {
 
 .card h2 {
   margin: 0 0 12px;
-  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  font-size: 3rem;
-  font-weight: 600;
+  font-family: "Outfit", "Segoe UI", sans-serif;
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.4px;
 }
 
 .feature-list {
@@ -367,6 +349,84 @@ button[disabled] {
   color: var(--text-dim);
 }
 
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.step-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: #090b11;
+  padding: 14px;
+}
+
+.step-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.audience-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.audience-list li {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: #090b11;
+  padding: 12px;
+  color: var(--text-dim);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: #090b11;
+  padding: 14px;
+}
+
+.faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.footer {
+  max-width: 1320px;
+  margin: 0 auto 26px;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-dim);
+}
+
+.footer a {
+  color: #ffffff;
+  font-weight: 600;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -375,6 +435,21 @@ button[disabled] {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-34px) translateX(10px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-70px) translateX(-8px) scale(0.95);
+    opacity: 0;
   }
 }
 
@@ -387,13 +462,8 @@ button[disabled] {
     font-size: 1rem;
   }
 
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .hero-art {
-    min-height: 420px;
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 6.2vw, 4rem);
   }
 }
 
@@ -432,7 +502,13 @@ button[disabled] {
     grid-template-columns: 1fr;
   }
 
-  .card h2 {
-    font-size: 2rem;
+  .steps-grid,
+  .audience-list,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    padding: 0 14px;
   }
 }
